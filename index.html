@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GitHub Search</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class='container' style='padding-top:10px'>
+        <form>
+            <div class="form-group">
+                <label>GitHub Code Search</label>
+                <input type="text" class="form-control" id="searchInput" placeholder="Search code...">
+            </div>
+        </form>
+        <div>
+            <div class="list-group" id='results'>
+
+            </div>
+        </div>
+    </div>
+    <script type='custom/template' id='result-template'>
+        <a href="{{html_url}}" class="list-group-item chrome-link">
+            <h5 class="list-group-item-heading">{{name}} - {{repository.name}}</h5>
+            <p class="list-group-item-text">{{path}}</p>
+        </a>
+    </script>
+    <script>
+    require("./search.js")
+    </script>
+</body>
+
+</html>
