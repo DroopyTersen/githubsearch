@@ -1,0 +1,9 @@
+  {
+    "win": {
+      "title": "GitHub Searcher",
+      "version": "x.x.x.x",
+      "publisher": "Andrew Petersen",
+      "icon": "github.ico",
+      "verbosity": 1
+    }
+  }

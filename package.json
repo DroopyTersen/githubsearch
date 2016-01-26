@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "menubar": "^3.0.0"
+    "menubar": "^3.0.0",
+    "moment": "^2.11.1",
+    "request-promise": "^2.0.0"
   },
   "devDependencies": {
     "electron-packager": "^5.2.1",

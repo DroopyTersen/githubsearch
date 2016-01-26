@@ -3,32 +3,92 @@
 
 <head>
     <title>GitHub Search</title>
+
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 
 <body>
     <div class='container' style='padding-top:10px'>
-        <form>
-            <div class="form-group">
-                <label>GitHub Code Search</label>
-                <input type="text" class="form-control" id="searchInput" placeholder="Search code...">
+         <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#profile" role="tab" data-toggle="tab">User</a></li>
+            <li role="presentation" ><a href="#codesearch" role="tab" data-toggle="tab">Code Search</a></li>
+            <li role="presentation"><a href="#repos" aria-controls="profile" role="tab" data-toggle="tab">Repos</a></li>
+          </ul>
+        
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane" id="codesearch">
+                <form class='code-search'>
+                    <div class="form-group">
+                        <label>GitHub Code Search</label>
+                        <input type="text" class="form-control" id="codesearch-input" placeholder="Search code...">
+                    </div>
+                </form>
+                <div>
+                    <div class="list-group" id='codesearch-results'></div>
+                </div>
             </div>
-        </form>
-        <div>
-            <div class="list-group" id='results'>
 
+            <div role="tabpanel" class="tab-pane active" id="profile">
+                <div style='margin-top: 15px'>
+                    <div id='profile-container'></div>
+                    <hr/>
+                    <form class='switch-profile'>
+                        <div class="form-group">
+                            <label>Switch user</label>
+                            <input type="text" class="form-control" id="profile-input" placeholder="Username...">
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
+
+            <div role="tabpanel" class="tab-pane" id="repos">
+                <form class='repo-search'>
+                    <div class="form-group">
+                        <label>GitHub Repositories</label>
+                        <input type="text" class="form-control" id="repo-input" placeholder="Search...">
+                    </div>
+                </form>
+                <div>
+                    <div class="list-group" id='repo-results'></div>
+                </div>
+            </div>
+          </div>
+      
     </div>
-    <script type='custom/template' id='result-template'>
+
+    <script type='custom/template' id='codesearch-result-template'>
         <a href="{{html_url}}" class="list-group-item chrome-link">
-            <h5 class="list-group-item-heading">{{name}} - {{repository.name}}</h5>
+            <h5 class="list-group-item-heading"><b style='font-size:1.1em'>{{name}}</b> - {{repository.name}}</h5>
             <p class="list-group-item-text">{{path}}</p>
         </a>
     </script>
-    <script>
-    require("./search.js")
+
+    <script type='custom/template' id='repo-result-template'>
+        <a href="{{html_url}}" class="list-group-item chrome-link">
+            <h4 class="list-group-item-heading">{{name}}</h4>
+            <p class="list-group-item-text">Updated {{lastUpdated}}</p>
+        </a>
     </script>
+
+    <script type='custom/template' id='profile-template'>
+        <div class="media">
+            <div class="media-left">
+                <a href="{{html_url}}" class='chrome-link'>
+                    <img style='width: 70px; height:70px' class="media-object" src="{{avatar_url}}" />
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">{{login}}</h4>
+                <p><b>{{name}}</b> has {{public_repos}} public repositories</p>
+            </div>
+        </div>
+       
+    </script>
+    <script>
+    require("./index.js")
+    </script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+
 </body>
 
 </html>
